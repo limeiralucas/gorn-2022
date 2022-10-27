@@ -2,7 +2,10 @@ from typing import Dict
 
 from fastapi import APIRouter
 
-router = APIRouter()
+from app.v1.endpoints import offers
+
+router = APIRouter(prefix='/v1')
+router.include_router(offers.router)
 
 
 @router.get('/')
