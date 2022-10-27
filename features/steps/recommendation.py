@@ -16,6 +16,11 @@ def make_request(context: Context):
     context.offers = response.json()
 
 
+@when('there\'s no recommendations for this customer')
+def customer_without_offers(context: Context):
+    assert context.user_email == 'zero_offer_customer@imgur.com'
+
+
 @then('I receive the following offers')
 def assert_recommendations(context: Context):
     assert_table_equals_list(context.table, context.offers)

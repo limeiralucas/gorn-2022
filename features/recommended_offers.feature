@@ -9,6 +9,10 @@ Feature: Get Recommended Offers for a Customer
             | 25 | Rubber | 871.24 |
 
     Scenario: Customer with zero recommended offers
-        Given a customer account with email "athraves7@imgur.com"
+        Given a customer account with email "zero_offer_customer@imgur.com"
         When I request for recommended offers
-        Then I receive the default recommendation
+            And there's no recommendations for this customer
+        Then I receive the following offers
+            | id | name       | price  |
+            | 0  | Decoration | 2000.0 |
+            | 0  | Grill      | 1300.0 |
